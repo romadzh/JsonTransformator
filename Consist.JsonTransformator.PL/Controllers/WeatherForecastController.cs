@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Consist.JsonTransformator.PL.Middlewares;
 
 namespace Consist.JsonTransformator.PL.Controllers
 {
@@ -24,6 +25,7 @@ namespace Consist.JsonTransformator.PL.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IEnumerable<WeatherForecast> Get()
         {
             var rng = new Random();

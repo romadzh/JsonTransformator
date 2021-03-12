@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Consist.JsonTransformator.BL.DomainObjects;
 using Consist.JsonTransformator.BL.Services.Interfaces;
+using Consist.JsonTransformator.PL.Middlewares;
 
 namespace Consist.JsonTransformator.PL.Controllers
 {
@@ -34,5 +35,16 @@ namespace Consist.JsonTransformator.PL.Controllers
             });
             return Ok(token);
         }
+
+
+        [Authorize]
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            
+            return Ok("users");
+        }
+
+
     }
 }

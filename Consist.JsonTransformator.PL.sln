@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consist.JsonTransformator.B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consist.JsonTransformator.DAL", "Consist.JsonTransformator.DAL\Consist.JsonTransformator.DAL.csproj", "{5A1D99C5-5E81-4A09-B9DB-FD6424112808}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParentChildTest", "ParentChildTest\ParentChildTest.csproj", "{46C0B7C4-15B1-4541-9319-88A674259E47}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{5A1D99C5-5E81-4A09-B9DB-FD6424112808}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A1D99C5-5E81-4A09-B9DB-FD6424112808}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A1D99C5-5E81-4A09-B9DB-FD6424112808}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46C0B7C4-15B1-4541-9319-88A674259E47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46C0B7C4-15B1-4541-9319-88A674259E47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46C0B7C4-15B1-4541-9319-88A674259E47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46C0B7C4-15B1-4541-9319-88A674259E47}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

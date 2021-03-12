@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using Consist.JsonTransformator.BL.DomainObjects.Settings;
 using Consist.JsonTransformator.BL.Services;
 using Consist.JsonTransformator.BL.Services.Interfaces;
+using Consist.JsonTransformator.PL.Middlewares;
 
 namespace Consist.JsonTransformator.PL
 {
@@ -28,13 +29,14 @@ namespace Consist.JsonTransformator.PL
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             services.AddControllers();
 
             var jwtSettings = new JwtSettings();
             Configuration.Bind(nameof(jwtSettings), jwtSettings);
             services.AddSingleton(jwtSettings);
 
-            services.AddSingleton<IAuthenticationService, JwtAuthenticateService>();
+            services.AddScoped<IAuthenticationService, JwtAuthenticateService>();
 
         }
 
@@ -48,9 +50,17 @@ namespace Consist.JsonTransformator.PL
 
             app.UseHttpsRedirection();
 
-            app.UseRouting();
+            
 
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+
+            app.UseMiddleware<JwtMiddleware>();
+            app.UseRouting();
             app.UseAuthorization();
+            
 
             app.UseEndpoints(endpoints =>
             {
