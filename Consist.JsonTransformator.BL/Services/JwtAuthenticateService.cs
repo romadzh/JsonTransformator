@@ -18,6 +18,11 @@ namespace Consist.JsonTransformator.BL.Services
         {
             _jwtSettings = jwtSettings;
         }
+
+        /// <summary>
+        /// provide authorization token 
+        /// </summary>
+        
         public string GetToken(AuthenticateDto authenticateDto)
         {
             if (string.IsNullOrEmpty(authenticateDto.UserName) && authenticateDto.Password == "123")

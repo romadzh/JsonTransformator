@@ -28,6 +28,9 @@ namespace Consist.JsonTransformator.PL.Controllers
         }
 
 
+        /// <summary>
+        /// Provide a bearer token 
+        /// </summary>
         [HttpGet("GetToken")]
         public IActionResult GetToken(string password = "123")
         {

@@ -25,9 +25,10 @@ namespace Consist.JsonTransformator.PL.Controllers
             _logger = logger;
         }
 
+        
         [HttpPost("Transform")]
         [Authorize]
-        public async Task<Child> Transform([FromBody] List<Parent> parents)
+        public async Task<Child> Transform([FromBody] IEnumerable<Parent> parents)
         {
 
             try

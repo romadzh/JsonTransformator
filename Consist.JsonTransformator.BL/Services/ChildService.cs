@@ -9,7 +9,13 @@ namespace Consist.JsonTransformator.BL.Services
 {
     public interface IChildService
     {
+        /// <summary>
+        /// transform flat collection to composite object
+        /// </summary>
         Child TransformToChild(IEnumerable<Parent> parents);
+        /// <summary>
+        /// Insert the object to repository
+        /// </summary>
         Task InsertAsync(Child child);
     }
 

@@ -12,6 +12,9 @@ namespace Consist.JsonTransformator.PL.Middlewares
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class AuthorizeAttribute : Attribute, IAuthorizationFilter
     {
+        /// <summary>
+        /// provide access only to authorized users
+        /// </summary>
         public void OnAuthorization(AuthorizationFilterContext context)
         {
             var userAuthenticated = context.HttpContext.Items.ContainsKey("userAuthenticated") && 

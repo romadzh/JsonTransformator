@@ -21,6 +21,9 @@ namespace Consist.JsonTransformator.PL.Middlewares
             _jwtSettings = jwtSettings;
         }
 
+        /// <summary>
+        /// For each request validates the token 
+        /// </summary>
         public async Task Invoke(HttpContext context, IAuthenticationService authenticationService)
         {
             var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
