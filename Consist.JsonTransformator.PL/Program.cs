@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Serilog;
 
 namespace Consist.JsonTransformator.PL
 {
@@ -18,6 +19,7 @@ namespace Consist.JsonTransformator.PL
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .UseSerilog((ctx, config) => { config.ReadFrom.Configuration(ctx.Configuration); })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();

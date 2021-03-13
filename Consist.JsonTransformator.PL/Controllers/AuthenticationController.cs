@@ -34,6 +34,7 @@ namespace Consist.JsonTransformator.PL.Controllers
             var authenticateDto = new AuthenticateDto {Password = password};
             try
             {
+                _logger.LogInformation("Get token executed");
                 var token = _authenticationService.GetToken(authenticateDto);
                 return Ok(token);
             }

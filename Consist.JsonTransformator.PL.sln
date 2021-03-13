@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Consist.JsonTransformator.B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Consist.JsonTransformator.DAL", "Consist.JsonTransformator.DAL\Consist.JsonTransformator.DAL.csproj", "{5A1D99C5-5E81-4A09-B9DB-FD6424112808}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParentChildConsoleTest", "ParentChildTest\ParentChildConsoleTest.csproj", "{46C0B7C4-15B1-4541-9319-88A674259E47}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consist.JsonTransformator.Contracts", "Consist.JsonTransformator.Contracts\Consist.JsonTransformator.Contracts.csproj", "{02AA896C-AC34-4909-A642-33914DCD45A2}"
 EndProject
 Global
@@ -31,10 +29,6 @@ Global
 		{5A1D99C5-5E81-4A09-B9DB-FD6424112808}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A1D99C5-5E81-4A09-B9DB-FD6424112808}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A1D99C5-5E81-4A09-B9DB-FD6424112808}.Release|Any CPU.Build.0 = Release|Any CPU
-		{46C0B7C4-15B1-4541-9319-88A674259E47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{46C0B7C4-15B1-4541-9319-88A674259E47}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{46C0B7C4-15B1-4541-9319-88A674259E47}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{46C0B7C4-15B1-4541-9319-88A674259E47}.Release|Any CPU.Build.0 = Release|Any CPU
 		{02AA896C-AC34-4909-A642-33914DCD45A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{02AA896C-AC34-4909-A642-33914DCD45A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02AA896C-AC34-4909-A642-33914DCD45A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
