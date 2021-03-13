@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Consist.JsonTransformator.DAL;
 using Consist.JsonTransformator.DAL.DataModels;
 using Consist.JsonTransformator.PL.Entities;
@@ -9,21 +10,21 @@ namespace Consist.JsonTransformator.BL.Services
     public interface IChildService
     {
         Child TransformToChild(IEnumerable<Parent> parents);
-        void Insert(Child child);
+        Task InsertAsync(Child child);
     }
 
     public class ChildService:IChildService
     {
-        private readonly ChildDalService _childDalService;
+        private readonly IChildDalService _childDalService;
 
-        public ChildService(ChildDalService childDalService)
+        public ChildService(IChildDalService childDalService)
         {
             _childDalService = childDalService;
         }
 
-        public void Insert(Child child)
+        public async Task InsertAsync(Child child)
         {
-            _childDalService.Create(child);
+            await _childDalService.CreateAsync(child);
         }
 
         public Child TransformToChild(IEnumerable<Parent> parents)
@@ -31,10 +32,10 @@ namespace Consist.JsonTransformator.BL.Services
             var sortedByParentId = parents.OrderBy(p => p.ParentId);
             var groupedBy = sortedByParentId.GroupBy(x => x.ParentId ?? 0).ToList();
 
-            Child child = new Child();
+            var child = new Child();
             foreach (var childGrouped in groupedBy)
             {
-                child.Set(childGrouped);
+                child.SetChildren(childGrouped);
             }
 
             return child;

@@ -35,8 +35,8 @@ namespace Consist.JsonTransformator.PL
             services.AddSingleton<IMongoDBConnectionSettings>(sp =>
                 sp.GetRequiredService<IOptions<MongoDBConnectionSettings>>().Value);
 
-            
-            services.AddSingleton<ChildDalService>(); //mongo client should be registered in DI with a singleton service lifetime
+            services.AddSingleton<IChildDalService, ChildDalService>(); //mongo client should be registered in DI with a singleton service lifetime
+            //services.AddSingleton<ChildDalService>();
             services.AddScoped<IChildService, ChildService>();
             
 

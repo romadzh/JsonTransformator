@@ -1,11 +1,16 @@
-﻿using Consist.JsonTransformator.BL.DomainObjects.Settings;
+﻿using System.Threading.Tasks;
+using Consist.JsonTransformator.BL.DomainObjects.Settings;
 using Consist.JsonTransformator.DAL.DataModels;
 using Consist.JsonTransformator.PL.Entities;
 using MongoDB.Driver;
 
 namespace Consist.JsonTransformator.DAL
 {
-    public class ChildDalService
+    public interface IChildDalService
+    {
+        Task CreateAsync(Child model);
+    }
+    public class ChildDalService : IChildDalService
     {
         private readonly IMongoCollection<Child> _collection;
 
@@ -17,10 +22,10 @@ namespace Consist.JsonTransformator.DAL
             _collection = database.GetCollection<Child>(mongoDbConnectionSettings.CollectionName);
         }
 
-        public void Create(Child model)
+        public async Task CreateAsync(Child model)
         {
-            _collection.DeleteOne(a => a.Id == model.Id);
-            _collection.InsertOne(model);
+            await _collection.DeleteOneAsync(a => a.Id == model.Id);
+            await _collection.InsertOneAsync(model);
             
         }
     }

@@ -24,15 +24,16 @@ namespace Consist.JsonTransformator.PL.Controllers
             _childService = childService;
             _logger = logger;
         }
+
         [HttpPost("Transform")]
         [Authorize]
-        public  Child Transform([FromBody] List<Parent> parents)
+        public async Task<Child> Transform([FromBody] List<Parent> parents)
         {
 
             try
             {
-                var child = _childService.TransformToChild(parents);
-                _childService.Insert(child);
+                var child =  _childService.TransformToChild(parents);
+                await _childService.InsertAsync(child);
                 return child;
             }
             catch (Exception ex)
