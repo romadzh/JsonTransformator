@@ -8,42 +8,44 @@ using System.Threading.Tasks;
 using Consist.JsonTransformator.BL.DomainObjects;
 using Consist.JsonTransformator.BL.Services.Interfaces;
 using Consist.JsonTransformator.PL.Middlewares;
+using Microsoft.Extensions.Logging;
 
 namespace Consist.JsonTransformator.PL.Controllers
 {
-
-    
 
     [Route("[controller]")]
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
         private readonly IAuthenticationService _authenticationService;
+        private readonly ILogger<AuthenticationController> _logger;
 
-        public AuthenticationController(IAuthenticationService authenticationService)
+        public AuthenticationController(IAuthenticationService authenticationService,
+            ILogger<AuthenticationController> logger)
         {
             _authenticationService = authenticationService;
+            _logger = logger;
         }
 
 
         [HttpGet("GetToken")]
         public IActionResult GetToken(string password = "123")
         {
-            var token = _authenticationService.GetToken(new AuthenticateDto
+            var authenticateDto = new AuthenticateDto {Password = password};
+            try
             {
-                Password = password
-            });
-            return Ok(token);
+                var token = _authenticationService.GetToken(authenticateDto);
+                return Ok(token);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex,ex.Message);
+                return BadRequest("Operation Failed, something get wrong");
+            }
         }
 
 
-        [Authorize]
-        [HttpGet]
-        public IActionResult GetAll()
-        {
-            
-            return Ok("users");
-        }
+       
 
 
     }

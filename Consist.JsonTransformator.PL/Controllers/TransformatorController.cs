@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Consist.JsonTransformator.BL.Services;
 using Consist.JsonTransformator.PL.Entities;
 using Consist.JsonTransformator.PL.Middlewares;
+using Microsoft.Extensions.Logging;
 
 namespace Consist.JsonTransformator.PL.Controllers
 {
@@ -14,38 +15,37 @@ namespace Consist.JsonTransformator.PL.Controllers
     [ApiController]
     public class TransformatorController : ControllerBase
     {
-        private readonly TestService _testService;
-        private readonly ChildService _childService;
+        private readonly IChildService _childService;
+        private readonly ILogger<TransformatorController> _logger;
 
-        public TransformatorController(TestService testService, ChildService childService)
+        public TransformatorController(IChildService childService,
+            ILogger<TransformatorController> logger)
         {
-            _testService = testService;
             _childService = childService;
+            _logger = logger;
         }
         [HttpPost("Transform")]
         [Authorize]
-        public Child Transform([FromBody] List<Parent> parents)
+        public  Child Transform([FromBody] List<Parent> parents)
         {
-            var sortedByParentId= parents.OrderBy(p => p.ParentId);
-            var groupedBy = sortedByParentId.GroupBy(x => x.ParentId ?? 0).ToList();
 
-            Child child = new Child();
-            foreach (var childGrouped in groupedBy)
+            try
             {
-                child.Set(childGrouped);
+                var child = _childService.TransformToChild(parents);
+                _childService.Insert(child);
+                return child;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                
             }
 
-            _childService.Insert(child);
+            return null;
 
-          return child;
         }
 
 
-        [HttpGet("testmongo")]
-        public IActionResult TestMongo()
-        {
-            _testService.InsertTest();
-            return Ok("salut");
-        }
+       
     }
 }

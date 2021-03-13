@@ -13,8 +13,4 @@
     <ProjectReference Include="..\Consist.JsonTransformator.DAL\Consist.JsonTransformator.DAL.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="DomainObjects\Settings\" />
-  </ItemGroup>
-
 </Project>
