@@ -12,12 +12,12 @@ namespace Consist.JsonTransformator.PL.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class TestController : ControllerBase
+    public class TransformatorController : ControllerBase
     {
         private readonly TestService _testService;
         private readonly ChildService _childService;
 
-        public TestController(TestService testService, ChildService childService)
+        public TransformatorController(TestService testService, ChildService childService)
         {
             _testService = testService;
             _childService = childService;

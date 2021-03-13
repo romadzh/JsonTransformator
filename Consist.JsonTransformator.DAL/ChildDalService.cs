@@ -19,7 +19,9 @@ namespace Consist.JsonTransformator.DAL
 
         public void Create(Child model)
         {
+            _collection.DeleteOne(a => a.Id == model.Id);
             _collection.InsertOne(model);
+            
         }
     }
 }
