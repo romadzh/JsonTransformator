@@ -1,15 +1,22 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json.Serialization;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace Consist.JsonTransformator.PL.Entities
 {
     public class Child
     {
-        [JsonIgnore]
-        public int PrimaryId { get; set; }
-        public int Id { get; set; }
+        //[JsonIgnore]
+        //[BsonId]
+        //[BsonRepresentation(BsonType.ObjectId)]
+        //public int PrimaryId { get; set; }
+        [JsonPropertyName("id")]
+        [BsonElement("Id")]
+        public int ItemId { get; set; }
         public string Name { get; set; }
+        [BsonElement("Childs")]
         public List<Child> Childs { get; }
 
         public Child()
@@ -23,9 +30,9 @@ namespace Consist.JsonTransformator.PL.Entities
                 PopulateSelf(itemsGroup);
             }
 
-            else if (itemsGroup.Key == Id) // items are children of the current child
+            else if (itemsGroup.Key == ItemId) // items are children of the current child
             {
-                Childs.AddRange(itemsGroup.Select(a => new Child { Id = a.Id,Name = a.Name}));
+                Childs.AddRange(itemsGroup.Select(a => new Child { ItemId = a.Id,Name = a.Name}));
             }
             else  // items are children of any of other child
             {
@@ -40,7 +47,7 @@ namespace Consist.JsonTransformator.PL.Entities
 
         private void PopulateSelf(IGrouping<int, Parent> parentGroup)
         {
-            Id = parentGroup.First().Id;
+            ItemId = parentGroup.First().Id;
             Name = parentGroup.First().Name;
         }
     }

@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using Consist.JsonTransformator.BL.DomainObjects.Settings;
-using Consist.JsonTransformator.DAL.DataModels;
 using Consist.JsonTransformator.PL.Entities;
 using MongoDB.Driver;
 
@@ -24,9 +23,7 @@ namespace Consist.JsonTransformator.DAL
 
         public async Task CreateAsync(Child model)
         {
-            await _collection.DeleteOneAsync(a => a.Id == model.Id);
             await _collection.InsertOneAsync(model);
-            
         }
     }
 }
