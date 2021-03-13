@@ -9,7 +9,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Consist.JsonTransformator.Contracts\Consist.JsonTransformator.Contracts.csproj" />
     <ProjectReference Include="..\Consist.JsonTransformator.DAL\Consist.JsonTransformator.DAL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DomainObjects\Settings\" />
   </ItemGroup>
 
 </Project>

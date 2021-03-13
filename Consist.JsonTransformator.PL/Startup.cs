@@ -13,7 +13,9 @@ using System.Threading.Tasks;
 using Consist.JsonTransformator.BL.DomainObjects.Settings;
 using Consist.JsonTransformator.BL.Services;
 using Consist.JsonTransformator.BL.Services.Interfaces;
+using Consist.JsonTransformator.DAL;
 using Consist.JsonTransformator.PL.Middlewares;
+using Microsoft.Extensions.Options;
 
 namespace Consist.JsonTransformator.PL
 {
@@ -29,6 +31,16 @@ namespace Consist.JsonTransformator.PL
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<MongoDBConnectionSettings>(Configuration.GetSection(nameof(MongoDBConnectionSettings)));
+            services.AddSingleton<IMongoDBConnectionSettings>(sp =>
+                sp.GetRequiredService<IOptions<MongoDBConnectionSettings>>().Value);
+
+            services.AddSingleton<TestDalService>();
+            services.AddSingleton<TestService>();
+            services.AddSingleton<ChildDalService>();
+            services.AddSingleton<ChildService>();
+
+
             services.AddCors();
             services.AddControllers();
 

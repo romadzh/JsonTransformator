@@ -5,11 +5,13 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Consist.JsonTransformator.PL", "Consist.JsonTransformator.PL\Consist.JsonTransformator.PL.csproj", "{DF068E0E-75D9-408D-AF25-FCCC0C8304A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consist.JsonTransformator.BL", "Consist.JsonTransformator.BL\Consist.JsonTransformator.BL.csproj", "{90E3C468-4B91-4BFD-81E9-92262CE7449E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Consist.JsonTransformator.BL", "Consist.JsonTransformator.BL\Consist.JsonTransformator.BL.csproj", "{90E3C468-4B91-4BFD-81E9-92262CE7449E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consist.JsonTransformator.DAL", "Consist.JsonTransformator.DAL\Consist.JsonTransformator.DAL.csproj", "{5A1D99C5-5E81-4A09-B9DB-FD6424112808}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Consist.JsonTransformator.DAL", "Consist.JsonTransformator.DAL\Consist.JsonTransformator.DAL.csproj", "{5A1D99C5-5E81-4A09-B9DB-FD6424112808}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParentChildTest", "ParentChildTest\ParentChildTest.csproj", "{46C0B7C4-15B1-4541-9319-88A674259E47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParentChildConsoleTest", "ParentChildTest\ParentChildConsoleTest.csproj", "{46C0B7C4-15B1-4541-9319-88A674259E47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consist.JsonTransformator.Contracts", "Consist.JsonTransformator.Contracts\Consist.JsonTransformator.Contracts.csproj", "{02AA896C-AC34-4909-A642-33914DCD45A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{46C0B7C4-15B1-4541-9319-88A674259E47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46C0B7C4-15B1-4541-9319-88A674259E47}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46C0B7C4-15B1-4541-9319-88A674259E47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02AA896C-AC34-4909-A642-33914DCD45A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02AA896C-AC34-4909-A642-33914DCD45A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02AA896C-AC34-4909-A642-33914DCD45A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02AA896C-AC34-4909-A642-33914DCD45A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

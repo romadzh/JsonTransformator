@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Consist.JsonTransformator.BL.Services;
 using Consist.JsonTransformator.PL.Entities;
 using Consist.JsonTransformator.PL.Middlewares;
 
@@ -13,6 +14,14 @@ namespace Consist.JsonTransformator.PL.Controllers
     [ApiController]
     public class TestController : ControllerBase
     {
+        private readonly TestService _testService;
+        private readonly ChildService _childService;
+
+        public TestController(TestService testService, ChildService childService)
+        {
+            _testService = testService;
+            _childService = childService;
+        }
         [HttpPost("Transform")]
         [Authorize]
         public Child Transform([FromBody] List<Parent> parents)
@@ -26,9 +35,17 @@ namespace Consist.JsonTransformator.PL.Controllers
                 child.Set(childGrouped);
             }
 
-
+            _childService.Insert(child);
 
           return child;
+        }
+
+
+        [HttpGet("testmongo")]
+        public IActionResult TestMongo()
+        {
+            _testService.InsertTest();
+            return Ok("salut");
         }
     }
 }
